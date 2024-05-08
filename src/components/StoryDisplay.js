@@ -2,6 +2,8 @@ import React from 'react';
 import '../styles/StoryDisplay.css';
 
 function StoryDisplay({ currentSentence, fullStory, sentenceCount }) {
+    const fullStoryText = fullStory.join(' ');
+
   return (
     <div className="story-display">
       {sentenceCount === 0 ? (
@@ -9,12 +11,10 @@ function StoryDisplay({ currentSentence, fullStory, sentenceCount }) {
       ) : sentenceCount % 5 === 0 ? (
         <div>
           <h2>Full Story</h2>
-          {fullStory.map((sentence, index) => (
-            <p key={index}>{sentence}</p>
-          ))}
+          <p>{fullStoryText}</p>
         </div>
       ) : (
-        <p>{sentenceCount}/5: {currentSentence}</p>
+        <p>{sentenceCount % 5}/5: {currentSentence}</p>
       )}
     </div>
   );

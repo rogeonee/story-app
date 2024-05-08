@@ -18,6 +18,7 @@ input {
     width: 300px;
     max-width: 80%;
     background-color: whitesmoke;
+    margin-bottom: 20px;
 }
 
 button {

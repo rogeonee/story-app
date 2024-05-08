@@ -1,36 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import StoryInput from './components/StoryInput';
 import StoryDisplay from './components/StoryDisplay';
-import './App.css';
+import './styles/App.css';
 
 function App() {
   const [currentSentence, setCurrentSentence] = useState('');
   const [fullStory, setFullStory] = useState([]);
   const [sentenceCount, setSentenceCount] = useState(0);
 
-  // fetch am existing story
-  useEffect(() => {
-    const fetchLastSentence = async () => {
-      try {
-        const response = await fetch('/api/last-sentence');
-        const data = await response.json();
-        // console.log('data:', data)
-        if (data.fullStory.length > 0) {
-          setCurrentSentence(data.lastSentence);
-          setFullStory(data.fullStory);
-          setSentenceCount(data.fullStory.length);
-        } else {
-          // If no story is available, start blank
-          setCurrentSentence('');
-          setFullStory([]);
-          setSentenceCount(0);
-        }
-      } catch (error) {
-        console.error('Failed to fetch the last sentence:', error);
+  const fetchLastSentence = async () => {
+    try {
+      const response = await fetch('/api/last-sentence');
+      const data = await response.json();
+      if (data.fullStory.length > 0) {
+        setCurrentSentence(data.lastSentence);
+        setFullStory(data.fullStory);
+        setSentenceCount(data.fullStory.length);
+      } else {
+        // If no story is available, start blank
+        setCurrentSentence('');
+        setFullStory([]);
+        setSentenceCount(0);
       }
-    };
+    } catch (error) {
+      console.error('Failed to fetch the last sentence:', error);
+    }
+  };
 
+  // fetch on page mount
+  useEffect(() => {
     fetchLastSentence();
+  }, []);
+
+  // fetch over an interval for updates
+  useEffect(() => {
+    const intervalId = setInterval(fetchLastSentence, 5000); // Poll every 5 seconds
+    return () => clearInterval(intervalId); // Cleanup on unmount
   }, []);
 
   const sendNewSentence = (newSentence) => {
