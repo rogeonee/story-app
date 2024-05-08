@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/StoryInput.css';
 
 function StoryInput({ onNewSentence }) {
   const [sentence, setSentence] = useState('');
@@ -37,7 +38,7 @@ function StoryInput({ onNewSentence }) {
         value={sentence}
         onChange={e => setSentence(e.target.value)}
         maxLength={25}
-        placeholder="Contribute your sentence..."
+        placeholder="Contribute your sentence (25 char max)"
       />
       <button type="submit">Contribute</button>
     </form>

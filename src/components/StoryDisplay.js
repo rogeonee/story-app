@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/StoryDisplay.css';
 
 function StoryDisplay({ currentSentence, fullStory, sentenceCount }) {
   return (
@@ -13,7 +14,7 @@ function StoryDisplay({ currentSentence, fullStory, sentenceCount }) {
           ))}
         </div>
       ) : (
-        <p>{currentSentence}</p>
+        <p>{sentenceCount}/5: {currentSentence}</p>
       )}
     </div>
   );

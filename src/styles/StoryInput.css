@@ -1,0 +1,36 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 2px solid #153448;
+    outline: none;
+    font-size: 16px;
+}
+
+input {
+    width: 300px;
+    max-width: 80%;
+    background-color: whitesmoke;
+}
+
+button {
+    background-color: #153448;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3C5B6F;
+}
+
+input:focus, button:focus {
+    border-color: #3C5B6F;
+}

@@ -1,0 +1,27 @@
+.story-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid #153448;
+    background-color: whitesmoke;
+    box-shadow: 0 2px 4px rgba(21, 52, 72, 0.1);
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 18px;
+}
+
+.story-display p, .story-display h2 {
+    color: #153448;
+    padding: 8px 0;
+}
+
+.story-display h2 {
+    border-bottom: 2px solid #153448;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
