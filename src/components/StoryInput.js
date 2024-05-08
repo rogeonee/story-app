@@ -9,7 +9,11 @@ function StoryInput({ onNewSentence }) {
     if (sentence.length > 25) {
       alert('Sentence must be 25 characters or less.');
       return;
+    } else if (sentence.length === 0) {
+        alert('You cannot send an empty contribution.');
+        return;
     }
+
     try {
       const response = await fetch('/api/submit-sentence', {
         method: 'POST',
